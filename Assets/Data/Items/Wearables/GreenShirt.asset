@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: GreenShirt
   m_EditorClassIdentifier: Assembly-CSharp::Scriptable_Objects.ItemDefinition
   displayName: Green Shirt
-  icon: {fileID: 0}
+  icon: {fileID: 4699831257799384692, guid: 4b25005329e9522439eb51741c8be7fa, type: 3}
   type: 2
   color: 2
