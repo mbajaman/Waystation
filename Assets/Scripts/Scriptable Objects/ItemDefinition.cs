@@ -11,7 +11,5 @@ namespace Scriptable_Objects
         public ClothingType type;
         // enum of set colors for now
         public ItemColor color;
-        
-
     }
 }
