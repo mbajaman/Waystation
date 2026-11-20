@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: YellowShirt
   m_EditorClassIdentifier: Assembly-CSharp::Scriptable_Objects.ItemDefinition
   displayName: Yellow Shirt
-  icon: {fileID: 0}
+  icon: {fileID: 1917959159725790447, guid: 9c63f38cdcf8be2479fd0c4853d63b19, type: 3}
   type: 2
   color: 3
