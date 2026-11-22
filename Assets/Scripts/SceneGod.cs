@@ -1,6 +1,12 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+/// <summary>
+/// Persistent game manager. Created automatically before the first scene loads,
+/// no matter which scene Play is pressed in. Never place this in a scene.
+/// </summary>
+[AddComponentMenu("")] // hidden from the Add Component menu
+[DisallowMultipleComponent]
 public class SceneGod : MonoBehaviour
 {
 	public static SceneGod SInstance { get; private set; }
@@ -11,23 +17,22 @@ public class SceneGod : MonoBehaviour
 	// handle to the additively loaded scene, so we unload exactly what we loaded
 	private Scene _overlayScene;
 
+	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
+	// This allows for the singleton to be prefab-less
+	private static void Bootstrap()
+	{
+		var go = new GameObject(nameof(SceneGod));
+		DontDestroyOnLoad(go);
+		SInstance = go.AddComponent<SceneGod>();
+	}
+
 	private void Awake()
 	{
-		// kill itself if there is another
+		// Only Bootstrap may create SceneGod. Anything else is a bug, so fail loudly.
 		if (SInstance != null && SInstance != this)
 		{
-			Destroy(gameObject);
-			return;
-		}
-		else
-		{
-			SInstance = this;
-			if (transform.parent != null)
-			{
-				Debug.LogWarning("SceneGod was parented, detaching to root so it persists.", this);
-				transform.SetParent(null);
-			}
-			DontDestroyOnLoad(gameObject);
+			Debug.LogError($"A second SceneGod was created on '{gameObject.name}'. Only one may exist; destroying it.", this);
+			Destroy(this);
 		}
 	}
 
@@ -57,4 +62,11 @@ public class SceneGod : MonoBehaviour
 		SceneManager.UnloadSceneAsync(_overlayScene);
 		_overlayScene = default;
 	}
+
+	// private enum Scene
+	// {
+	// 	MainMenu,
+	// 	LevelScene1,
+	// 	End,
+	// }
 }
