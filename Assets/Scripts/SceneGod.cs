@@ -2,20 +2,13 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 /// <summary>
-/// Persistent game manager. Created automatically before the first scene loads,
-/// no matter which scene Play is pressed in. Never place this in a scene.
+/// Persistent scene service. Created automatically. Do not put game logic here
 /// </summary>
 [AddComponentMenu("")] // hidden from the Add Component menu
 [DisallowMultipleComponent]
 public class SceneGod : MonoBehaviour
 {
 	public static SceneGod SInstance { get; private set; }
-
-	public enum GameState { Playing, Paused }
-	public GameState CurrentState { get; private set; }
-
-	// handle to the additively loaded scene, so we unload exactly what we loaded
-	private Scene _overlayScene;
 
 	[RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
 	// This allows for the singleton to be prefab-less
@@ -37,36 +30,33 @@ public class SceneGod : MonoBehaviour
 	}
 
 	/// <summary>
-	/// Loads a scene on top of the current one and keeps a direct handle to it.
+	/// Replaces all loaded scenes with the given scene.
 	/// </summary>
-	public void LoadOverlay(string sceneName)
+	public void ChangeScene(string sceneName)
 	{
-		if (_overlayScene.IsValid())
-		{
-			Debug.LogWarning($"Overlay {_overlayScene.name} already loaded!");
-			return;
-		}
-		_overlayScene = SceneManager.LoadScene(sceneName, new LoadSceneParameters(LoadSceneMode.Additive));
+		SceneManager.LoadScene(sceneName, LoadSceneMode.Single);
 	}
 
 	/// <summary>
-	/// Unloads the overlay scene loaded by LoadOverlay.
+	/// Adds a scene on top of the currently loaded ones (e.g. a pause menu).
+	/// Remove it again with UnloadScene.
 	/// </summary>
-	public void UnloadOverlay()
+	public void LoadScene(string sceneName)
 	{
-		if (!_overlayScene.IsValid())
+		// Duplicate guard
+		if (SceneManager.GetSceneByName(sceneName).IsValid())
 		{
-			Debug.LogWarning("No overlay loaded!");
+			Debug.LogWarning($"Scene '{sceneName}' is already loaded!");
 			return;
 		}
-		SceneManager.UnloadSceneAsync(_overlayScene);
-		_overlayScene = default;
+		SceneManager.LoadScene(sceneName, LoadSceneMode.Additive);
 	}
 
-	// private enum Scene
-	// {
-	// 	MainMenu,
-	// 	LevelScene1,
-	// 	End,
-	// }
+	/// <summary>
+	/// Removes a scene added with LoadScene. To replace the level, use ChangeScene.
+	/// </summary>
+	public void UnloadScene(string sceneName)
+	{ 
+		SceneManager.UnloadSceneAsync(sceneName);
+	}
 }
