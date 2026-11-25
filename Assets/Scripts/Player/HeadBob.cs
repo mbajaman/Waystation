@@ -3,20 +3,27 @@ using UnityEngine.InputSystem;
 
 namespace Player
 {
+    /// <summary>
+    /// Bobs the camera while the player walks. Moves the pivot off its rest pose,
+    /// then eases it back when they stop.
+    /// </summary>
     public class HeadBob : MonoBehaviour
     {
         [SerializeField] private Transform bobPivot;
-        [SerializeField] private float walkSpeed = 5f; // match PlayerMovement.moveSpeed
-        [SerializeField] private float bobHeight = 0.014f; // metres, one bob per footfall
-        [SerializeField] private float bobSway = 0.006f; // metres, one sway per two steps
-        [SerializeField] private float rollDegrees = 0.2f;
-        [SerializeField] private float stepRate = 1.8f; // footfalls per second at walkSpeed
-        [SerializeField] private float settleTime = 0.09f;
+        [SerializeField] private float bobHeight = 0.028f; // metres, one bob per footfall
+        [SerializeField] private float bobSway = 0.012f; // metres, one sway per two steps
+        [SerializeField] private float rollDegrees = 0.6f;
+        [SerializeField] private float stepRate = 1.8f; // footfalls per second at full input
+        [SerializeField] private float settleTime = 0.18f;
 
-        private InputAction _move;
-        private Vector3 _baseLocal;
-        private float _phase;
-        private float _amount;
+        
+        private InputAction _move; // the Move action
+        
+        private Vector3 _baseLocal; // the pivot's rest position, so the bob is added on top and can come back home
+        
+        private float _phase; // where we are in the step. keeps going while the player is moving
+        
+        private float _amount; // how strong the bob is right now.
 
         private void Awake()
         {
