@@ -11,6 +11,9 @@
 # ProBuilder
 ProjectSettings/Packages/com.unity.probuilder/Settings.json
 
+# Cursor
+.cursor/plans
+
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/

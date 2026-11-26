@@ -1,0 +1,10 @@
+﻿---
+description: Where this repo's agent skills live
+alwaysApply: true
+---
+
+# Project skills
+
+Skills for this repo are in `.cursor/skills/<skill-name>/SKILL.md`, relative to the Waypoint root.
+
+When a skill path under `C:\Users\Mohammed\.cursor\skills` is missing, read the same skill from `Waypoint\.cursor\skills` instead.

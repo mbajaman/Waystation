@@ -12,6 +12,8 @@ GameObject:
   - component: {fileID: 1158780485330511208}
   - component: {fileID: 7054384567556864707}
   - component: {fileID: 4908507234227426396}
+  - component: {fileID: 4402824950161750251}
+  - component: {fileID: 7209527228233466980}
   m_Layer: 0
   m_Name: PlayerCharacter
   m_TagString: Untagged
@@ -34,6 +36,7 @@ Transform:
   m_Children:
   - {fileID: 6971670009460821471}
   - {fileID: 7196530287040645595}
+  - {fileID: 8885201517765330781}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!143 &1158780485330511208
@@ -95,6 +98,78 @@ MonoBehaviour:
   rollDegrees: 0.2
   stepRate: 5
   settleTime: 0.18
+--- !u!114 &4402824950161750251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942900323706647592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f65d633f3a0b2a74ea32c76f1e088f9e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.Interactor
+  view: {fileID: 6781803765026979742}
+  reach: 2.5
+  castRadius: 0.1
+  mask:
+    serializedVersion: 2
+    m_Bits: 51
+  prompt: {fileID: 0}
+  promptOffset: 0.15
+--- !u!114 &7209527228233466980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942900323706647592}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b37bba6e6764774f969c3736ddaf76f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerHands
+  holdPoint: {fileID: 8885201517765330781}
+  followStrength: 15
+  maxFollowSpeed: 12
+  rotateStrength: 10
+  breakDistance: 1.5
+  tapTime: 0.2
+  maxChargeTime: 1
+  minThrowImpulse: 2
+  maxThrowImpulse: 12
+--- !u!1 &1114724994456908829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8885201517765330781}
+  m_Layer: 0
+  m_Name: HoldPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8885201517765330781
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1114724994456908829}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0.2, z: 1.5}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 505740764416055059}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6064633055962465743
 GameObject:
   m_ObjectHideFlags: 0
