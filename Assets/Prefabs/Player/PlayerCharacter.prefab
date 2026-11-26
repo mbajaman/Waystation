@@ -73,7 +73,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c73b963904770584e87863d15fec2b2e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerMovement
-  moveSpeed: 5
+  moveSpeed: 6
   lookSensitivity: 0.25
   head: {fileID: 7196530287040645595}
   gravity: -9.81
@@ -90,10 +90,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player.HeadBob
   bobPivot: {fileID: 6781803765026979742}
-  bobHeight: 0.028
-  bobSway: 0.003
-  rollDegrees: 0.6
-  stepRate: 1.8
+  bobHeight: 0.02
+  bobSway: 0.03
+  rollDegrees: 0.2
+  stepRate: 5
   settleTime: 0.18
 --- !u!1 &6064633055962465743
 GameObject:

@@ -10,10 +10,10 @@ namespace Player
     public class HeadBob : MonoBehaviour
     {
         [SerializeField] private Transform bobPivot;
-        [SerializeField] private float bobHeight = 0.028f; // metres, one bob per footfall
-        [SerializeField] private float bobSway = 0.012f; // metres, one sway per two steps
-        [SerializeField] private float rollDegrees = 0.6f;
-        [SerializeField] private float stepRate = 1.8f; // footfalls per second at full input
+        [SerializeField] private float bobHeight = 0.02f; // metres, one bob per footfall
+        [SerializeField] private float bobSway = 0.03f; // metres, one sway per two steps
+        [SerializeField] private float rollDegrees = 0.2f;
+        [SerializeField] private float stepRate = 5f; // footfalls per second at full input
         [SerializeField] private float settleTime = 0.18f;
 
         
