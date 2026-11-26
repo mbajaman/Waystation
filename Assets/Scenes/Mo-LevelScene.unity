@@ -1324,6 +1324,10 @@ PrefabInstance:
       propertyPath: m_VersionIndex
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 5628751671891661706, guid: 3ea0d28d73eaf19448826cbdebd24031, type: 3}
+      propertyPath: m_RenderingLayerMask
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6117469691925071672, guid: 3ea0d28d73eaf19448826cbdebd24031, type: 3}
       propertyPath: m_Mesh
       value: 
