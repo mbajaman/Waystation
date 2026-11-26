@@ -8,6 +8,9 @@
 
 .idea
 
+# ProBuilder
+ProjectSettings/Packages/com.unity.probuilder/Settings.json
+
 .utmp/
 /[Ll]ibrary/
 /[Tt]emp/

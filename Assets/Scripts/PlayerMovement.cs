@@ -26,11 +26,12 @@ public class PlayerMovement : MonoBehaviour
 
     void Update()
     {
-        //convinence will do cleaner setup later
-        #if UNITY_EDITOR
-                if (Keyboard.current.escapeKey.wasPressedThisFrame)
-                    UnityEditor.EditorApplication.isPlaying = false;
-        #endif
+        // convinence will do cleaner setup later
+        // #if UNITY_EDITOR
+        //         if (Keyboard.current.escapeKey.wasPressedThisFrame)
+        //             UnityEditor.EditorApplication.isPlaying = false;
+        // #endif
+        
         //movement
         Vector2 input = _moveAction.ReadValue<Vector2>();
         Vector3 move = transform.right * input.x + transform.forward * input.y;
