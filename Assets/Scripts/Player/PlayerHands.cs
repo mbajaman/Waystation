@@ -30,6 +30,11 @@ namespace Player
         /// True while a prop is in the player's hands.
         /// </summary>
         public bool IsHolding => _pickup != null;
+        
+        /// <summary>
+        /// The prop in the player's hands, or null
+        /// </summary>
+        public Pickup Held => _pickup;
 
         private void Awake()
         {
