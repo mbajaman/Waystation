@@ -1,13 +1,14 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
+
 public class PlayerMovement : MonoBehaviour
 {
-    
     [SerializeField] private float moveSpeed = 5f;
     [SerializeField] private float lookSensitivity = 0.1f;
     [SerializeField] private Transform head;
     [SerializeField] private float gravity = -9.81f;
-    
+
     private CharacterController _ctrl;
     private InputAction _moveAction, _lookAction, _jumpAction;
     private float _pitch;
@@ -27,11 +28,11 @@ public class PlayerMovement : MonoBehaviour
     void Update()
     {
         // convinence will do cleaner setup later
-        // #if UNITY_EDITOR
-        //         if (Keyboard.current.escapeKey.wasPressedThisFrame)
-        //             UnityEditor.EditorApplication.isPlaying = false;
-        // #endif
-        
+#if UNITY_EDITOR
+        if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            EditorApplication.isPlaying = false;
+#endif
+
         //movement
         Vector2 input = _moveAction.ReadValue<Vector2>();
         Vector3 move = transform.right * input.x + transform.forward * input.y;

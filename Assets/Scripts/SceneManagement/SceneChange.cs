@@ -2,8 +2,7 @@ using UnityEngine;
 
 public class SceneChange : MonoBehaviour
 {
-    [SerializeField]
-    [Tooltip("Scene name")]
+    [SerializeField] [Tooltip("Scene name")]
     private string sceneName;
 
     /// <summary>Replaces all loaded scenes with this scene</summary>
